@@ -49,8 +49,10 @@ app.use('/api/v2/me', proxy(EnvsService.env.AUTH0_DOMAIN, {
 
 app.use('/api', AuthService.checkJwt, proxy(EnvsService.env.API_SERVER, {
     proxyReqPathResolver: function (req) {
+        console.log("req for api")
         const domain = EnvsService.env.API_SERVER;
         const url = `${domain}${req.baseUrl}${req.url}`;
+        console.log("req for api parts. Url: ", url, "domain:", domain, "reqbaseUrl:", req.baseUrl, "requrl", req.url)
         return url
     }
 }));
