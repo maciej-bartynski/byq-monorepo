@@ -1,0 +1,35 @@
+{
+  "name": "byq-monorepo-backend",
+  "version": "1.0.0",
+  "description": "banking application - manage many accounts",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index",
+    "dev": "nodemon ./index"
+  },
+  "author": "Maciej Bartyński",
+  "license": "MIT",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-jwt": "^7.7.5",
+    "express-jwt-authz": "^2.4.1",
+    "express-oauth2-jwt-bearer": "^1.1.0",
+    "express-openid-connect": "^2.8.0",
+    "jwks-rsa": "^2.1.4",
+    "jwt-decode": "^3.1.2",
+    "mongodb": "^4.8.1",
+    "request": "^2.88.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

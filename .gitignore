@@ -1,0 +1,5 @@
+deploy
+*.pem
+.env
+.env.template
+node_modules
