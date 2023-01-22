@@ -16,7 +16,7 @@ const AuthService = {
                     jwksRequestsPerMinute: 5,
                     jwksUri: `${authConfig.AUTH0_DOMAIN}/.well-known/jwks.json`
                 }),
-                audience: authConfig.audience,
+                audience: authConfig.AUTH0_DOMAIN,
                 issuer: `${authConfig.AUTH0_DOMAIN}/`,
                 algorithms: ['RS256'],
             })
