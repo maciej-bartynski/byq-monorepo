@@ -42,6 +42,7 @@ function getInstance(authConfig) {
              * This code block does not know if managementToken is expired.
              * Add checker logic and refetch if needed.
              */
+            console.log("fetch users from", `${authConfig.AUTH0_DOMAIN}/api/v2/users`)
             const options = {
                 method: 'GET',
                 url: `${authConfig.AUTH0_DOMAIN}/api/v2/users`,

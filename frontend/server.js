@@ -29,7 +29,12 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use('/users', AuthService.checkJwt, AuthManagementService.fetchAuth0Users);
+app.use('/users', (req, res, next) => {
+    const domain = EnvsService.env.API_SERVER;
+    console.log("domain for apiserver", EnvsService.env.API_SERVER)
+    console.log("reqest", req.baseUrl, "/", req.url)
+    next();
+},AuthService.checkJwt, AuthManagementService.fetchAuth0Users);
 
 app.use('/api/v2/access-token', proxy(EnvsService.env.AUTH0_DOMAIN, {
     proxyReqPathResolver: function (req) {
@@ -49,10 +54,8 @@ app.use('/api/v2/me', proxy(EnvsService.env.AUTH0_DOMAIN, {
 
 app.use('/api', AuthService.checkJwt, proxy(EnvsService.env.API_SERVER, {
     proxyReqPathResolver: function (req) {
-        console.log("req for api")
         const domain = EnvsService.env.API_SERVER;
         const url = `${domain}${req.baseUrl}${req.url}`;
-        console.log("req for api parts. Url: ", url, "domain:", domain, "reqbaseUrl:", req.baseUrl, "requrl", req.url)
         return url
     }
 }));
