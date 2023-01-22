@@ -14,10 +14,10 @@ const AuthService = {
                     cache: true,
                     rateLimit: true,
                     jwksRequestsPerMinute: 5,
-                    jwksUri: `${authConfig.domain}/.well-known/jwks.json`
+                    jwksUri: `${authConfig.AUTH0_DOMAIN}/.well-known/jwks.json`
                 }),
                 audience: authConfig.audience,
-                issuer: `${authConfig.domain}/`,
+                issuer: `${authConfig.AUTH0_DOMAIN}/`,
                 algorithms: ['RS256'],
             })
         }

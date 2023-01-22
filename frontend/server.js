@@ -29,12 +29,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use('/users', (req, res, next) => {
-    const domain = EnvsService.env.API_SERVER;
-    console.log("domain for apiserver", EnvsService.env.API_SERVER)
-    console.log("reqest", req.baseUrl, "/", req.url)
-    next();
-},AuthService.checkJwt, AuthManagementService.fetchAuth0Users);
+app.use('/users', AuthService.checkJwt, AuthManagementService.fetchAuth0Users);
 
 app.use('/api/v2/access-token', proxy(EnvsService.env.AUTH0_DOMAIN, {
     proxyReqPathResolver: function (req) {
